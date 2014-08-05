@@ -14,7 +14,7 @@ SocksServer::SocksServer(QHostAddress listenAddress,
     QObject(parent), _listenAddress(listenAddress), _listenPort(listenPort), _throttle(throttle)
 {
     //TODO 修改GUI传入的参数
-    encrypt = new class encrypt(QString("enjoydiy"), QString("rc4"));
+    encrypt = new class encrypt(QString("passwd"), QString("rc4"));
     remotePort = 1863;
 }
 
@@ -42,7 +42,7 @@ void SocksServer::start()
     if (!_serverSock.isNull())
         _serverSock->deleteLater();
 
-    remoteIp = QHostInfo::fromName("vpn1.enjoydiy.com");
+    remoteIp = QHostInfo::fromName("socksserver.com");
     if(remoteIp.addresses().isEmpty())
     {
         qDebug() << "diy socks server domain can be looked up";
